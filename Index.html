@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripts</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            font-family: 'Fredoka One', sans-serif;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        pre {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        pre:hover {
+            background-color: #444;
+        }
+        button {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #666;
+        }
+        .section {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .section img {
+            max-width: 150px;
+            margin-right: 20px;
+        }
+        .copied {
+            background-color: #28a745;
+            transition: background-color 0.3s ease, opacity 0.5s ease;
+            opacity: 1;
+        }
+        .discord-link {
+            color: #7289da;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .discord-link:hover {
+            color: #99aab5;
+        }
+        .code-style {
+            display: inline-block;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 16px;
+        }
+        .get-new-script {
+            display: block;
+            margin-top: 20px;
+        }
+        @keyframes rainbow {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
+        }
+
+        h2 {
+            animation: rainbow 5s linear infinite;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <h1>Scripts</h1>
+
+    <!-- Anticheat Section with clickable code block linking to Google Drive -->
+    <div class="section">
+        <img src="anticheat.png" alt="Anticheat Icon">
+        <div>
+            <h2>ANTICHEAT:</h2>
+            <a href="https://drive.google.com/drive/folders/1UnRQQEDBswiV5rZyg4rU0yh_1DZOIw7E?usp=drive_link" target="_blank">
+                <pre>Click me for anticheat! (put in ServerScriptService)</pre>
+            </a>
+        </div>
+    </div>
+
+    <!-- MSPaint Section with Image -->
+    <div class="section">
+        <img src="mspaint.png" alt="MS Paint Icon">
+        <div>
+            <h2>MSPAINT (OLD):</h2>
+            <pre id="mspaint-script">loadstring(game:HttpGet("https://raw.githubusercontent.com/notpoiu/mspaint/main/main.lua"))()</pre>
+            <button onclick="copyText('loadstring(game:HttpGet(\\\"https://raw.githubusercontent.com/notpoiu/mspaint/main/main.lua\\\"))()')">📋</button>
+        </div>
+    </div>
+
+    <!-- GET NEW SCRIPT Section Below MSPaint -->
+    <div class="get-new-script">
+        <pre id="new-script">GET NEW SCRIPT: discord.gg/mspaint</pre>
+        <button onclick="copyText('discord.gg/mspaint')">📋</button>
+    </div>
+
+    <!-- Seek-Plush Section with Image -->
+    <div class="section">
+        <img src="seekplush.png" alt="Seek Plush Icon">
+        <div>
+            <h2>SEEK-PLUSH:</h2>
+            <pre>local plr = game.Players.LocalPlayer
+local hum = plr.Character:WaitForChild("Humanoid")
+
+local plush = game:GetObjects("rbxassetid://13613269677")[1]
+plush.Parent = plr.Backpack
+local anim = hum:LoadAnimation(plush.A.Hold)
+
+plush.Equipped:Connect(function()
+  anim:Play()
+end)
+plush.Unequipped:Connect(function()
+  anim:Stop()
+end)
+
+plush.Activated:Connect(function()
+  plush.Toy:Play()
+end)</pre>
+            <button onclick="copyText(`local plr = game.Players.LocalPlayer
+local hum = plr.Character:WaitForChild("Humanoid")
+
+local plush = game:GetObjects("rbxassetid://13613269677")[1]
+plush.Parent = plr.Backpack
+local anim = hum:LoadAnimation(plush.A.Hold)
+
+plush.Equipped:Connect(function()
+  anim:Play()
+end)
+plush.Unequipped:Connect(function()
+  anim:Stop()
+end)
+
+plush.Activated:Connect(function()
+  plush.Toy:Play()
+end)`)">📋</button>
+        </div>
+    </div>
+
+    <script>
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                const button = event.target;
+                button.classList.add('copied'); // Add green background
+                setTimeout(function() {
+                    button.classList.remove('copied'); // Remove green background after fading
+                }, 2000); // 2 seconds delay for fade out
+                alert('Copied to clipboard!');
+            }, function(err) {
+                alert('Failed to copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
